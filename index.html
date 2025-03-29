@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+ <title>ابراهيم تواصل اجتماعي</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <!-- شريط التنقل العلوي -->
+ <nav class="navbar">
+ <div class="nav-brand">ابراهيم تواصل اجتماعي</div>
+ <ul class="nav-links">
+ <li><a href="#home">الرئيسية</a></li>
+ <li><a href="#profile">الملف الشخصي</a></li>
+ <li><a href="#settings">الإعدادات</a></li>
+ <li><button id="logout-btn" onclick="logout()">تسجيل الخروج</button></li>
+ </ul>
+ </nav>
+
+ <header>
+ <h1>ابراهيم تواصل اجتماعي</h1>
+ <img src="https://img.freepik.com/free-vector/social-media-concept-illustration_114360-1114.jpg" alt="شعار التطبيق">
+ <div id="notification" class="notification" style="display:none"></div>
+ <button id="theme-toggle" onclick="toggleTheme()">الوضع الليلي</button>
+ </header>
+
+ <main>
+ <!-- قسم الإحصائيات -->
+ <section id="stats-section">
+ <div class="stats">
+ <h3>إحصائيات المستخدم</h3>
+ <p>عدد المنشورات: <span id="post-count">0</span></p>
+ <p>عدد الإعجابات: <span id="like-count">0</span></p>
+ </div>
+ </section>
+
+ <!-- حقل البحث -->
+ <section id="search-section">
+ <input type="text" id="search-input" placeholder="ابحث في المنشورات..." onkeyup="searchPosts()">
+ <button onclick="refreshPosts()">تحديث المنشورات</button>
+ </section>
+
+ <!-- مؤشر التحميل -->
+ <div id="loading-spinner" class="spinner" style="display:none">
+ <div class="spinner-circle"></div>
+ </div>
+
+ <div class="content-wrapper">
+ <!-- قسم المنشورات -->
+ <section id="post-section">
+ <div class="user-info">
+ <img src="https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg" alt="صورة المستخدم" class="user-pic">
+ <span>ابراهيم</span>
+ </div>
+ <textarea id="post-input" placeholder="اكتب منشورك هنا..."></textarea>
+ <button onclick="addPost()">نشر</button>
+ </section>
+
+ <section id="posts">
+ <h2>المنشورات</h2>
+ <div id="posts-list">
+ <!-- سيتم إضافة المنشورات ديناميكياً هنا -->
+ <!-- مثال لمنشور (للتوضيح فقط، سيتم إنشاؤه بواسطة JavaScript) -->
+ <div class="post" data-id="example-post">
+ <div class="post-header">
+ <img src="https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg" alt="صورة المستخدم">
+ <span>ابراهيم</span>
+ <span class="post-time">30 مارس 2025</span>
+ </div>
+ <p>هذا منشور تجريبي</p>
+ <div class="post-actions">
+ <button class="like-btn" onclick="likePost('example-post', 0)">إعجاب (0)</button>
+ <button class="quick-like" onclick="quickLike('example-post')">❤️</button>
+ <select onchange="reactWithEmoji('example-post', this.value)">
+ <option value="">تفاعل</option>
+ <option value="😊">😊</option>
+ <option value="❤️">❤️</option>
+ <option value="😂">😂</option>
+ </select>
+ <span></span>
+ <button onclick="document.getElementById('comment-example-post').style.display='block'">تعليق</button>
+ </div>
+ <div class="comment-section">
+ <textarea id="comment-example-post" class="comment-input" placeholder="اكتب تعليقك..." style="display:none"></textarea>
+ <button onclick="addComment('example-post')">إرسال</button>
+ <div id="comments-example-post"></div>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- قسم الاقتراحات -->
+ <aside id="suggestions">
+ <h3>اقتراحات</h3>
+ <ul>
+ <li><img src="https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg" alt="صورة مستخدم" class="suggestion-pic"> أحمد - صديق مقترح</li>
+ <li><img src="https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg" alt="صورة مستخدم" class="suggestion-pic"> سارة - صديقة مقترحة</li>
+ </ul>
+ </aside>
+ </div>
+ </main>
+
+ <!-- زر التمرير إلى الأعلى -->
+ <button id="scroll-top" onclick="scrollToTop()">⬆</button>
+
+ <!-- تذييل -->
+ <footer>
+ <p>© 2025 ابراهيم - جميع الحقوق محفوظة</p>
+ </footer>
+
+ <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+ <script src="script.js"></script>
+</body>
+</html>
